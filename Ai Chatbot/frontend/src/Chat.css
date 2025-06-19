@@ -1,0 +1,164 @@
+/* Base reset and layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #d0e7ff, #f0f4ff);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+/* Background Heading Text above the chat */
+body::before {
+  content: "AI Chatbot Assistant";
+  position: fixed;             /* fixed so it stays on top of the page */
+  top: 20px;                  /* place it near the top */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6vw;
+
+  font-weight: 700;
+  color: rgba(79, 141, 243, 0.9);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 1000;              /* higher than chat container */
+}
+
+/* Add margin-top to chat container so it doesn’t overlap with heading */
+.chat-container {
+  margin-top: 80px; /* adjust as needed depending on heading size */
+}
+
+/* Responsive adjustments */
+@media (min-width: 700px) {
+  body::before {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 350px) {
+  body::before {
+    font-size: 4vw;
+    top: 10px;
+  }
+
+  .chat-container {
+    margin-top: 60px;
+  }
+}
+
+
+/* Chat container with frosted effect */
+.chat-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  max-width: 900px;
+  height: 90vh;
+  background-color: rgba(255, 255, 255, 0.85); /* translucent */
+  backdrop-filter: blur(8px); /* glassmorphism */
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* Scrollable chat box */
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #f7f9fb;
+  scroll-behavior: smooth;
+}
+
+/* Message styling */
+.message {
+  max-width: 75%;
+  padding: 12px 18px;
+  border-radius: 22px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* User bubble */
+.message.user {
+  align-self: flex-end;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Bot bubble */
+.message.bot {
+  align-self: flex-start;
+  background: #e9ecef;
+  color: #333;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input form styling */
+form {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+button {
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  border: none;
+  border-radius: 24px;
+  color: white;
+  padding: 12px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #0056b3, #074d6b);
+  transform: scale(1.05);
+}
