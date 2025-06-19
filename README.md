@@ -26,3 +26,12 @@ This is a full-stack AI-powered chatbot app built using **React (frontend)** and
 ##  Backend Setup
 
 
+
+##  Assumptions & Limitations
+Uses Gemini Pro model (v1 endpoint)
+
+Fallbacks to OpenAI (if .env includes OPENAI_API_KEY)
+
+No user auth or chat history
+
+Local-only (not deployed)
